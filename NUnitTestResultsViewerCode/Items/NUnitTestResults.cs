@@ -64,7 +64,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (int)readAttribute<int>( "errors" );
+        return (int)readAttribute<int>( "asserts" );//return (int)readAttribute<int>( "errors" );
       }
     }
 
@@ -75,7 +75,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (int)readAttribute<int>( "failures" );
+        return (int)readAttribute<int>( "failed" );//return (int)readAttribute<int>( "failures" );
       }
     }
 
@@ -86,7 +86,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (int)readAttribute<int>( "not-run" );
+        return (int)readAttribute<int>( "inconclusive" );//return (int)readAttribute<int>( "not-run" );
       }
     }
 
@@ -108,7 +108,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (int)readAttribute<int>( "ignored" );
+        return (int)readAttribute<int>( "inconclusive" );//return (int)readAttribute<int>( "ignored" );
       }
     }
 
@@ -130,7 +130,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (int)readAttribute<int>( "invalid" );
+        return (int)readAttribute<int>( "inconclusive" );//return (int)readAttribute<int>( "invalid" );
       }
     }
 

@@ -31,7 +31,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
         get
         {
-           XAttribute x = _element.Attribute("name");
+            XAttribute x = _element.Attribute("name");
             return findAllTestResults( x.Value ?? null );
         }
     }
@@ -83,18 +83,23 @@ namespace NUnitTestResultsViewerCode.Items
         IEnumerable<XElement> nodes = root.Descendants( "test-case" );
         foreach ( XElement n in nodes )
         {
+            string build_date = n.Ancestors( "test-suite" )
+                .Where(x => (string) x.Attribute("type") == "Assembly")
+                .Select(x => (string) x.Attribute("name"))
+                .FirstOrDefault();
             if (n.Attribute("name").Value == testcaseName) {
-                    if (n.Attribute("executed").Value == "True") {
-                        history.Append(string.Format("executed = '{0}' result = '{1}' success = '{2}' time = '{3}' asserts = '{4}'\n", 
-                            n.Attribute("executed").Value,
+                    if (n.Attribute("runstate").Value == "Runnable") {
+                        history.Append(string.Format("build '{0}' executed = '{1}' result = '{2}' success = '{3}' time = '{4}' asserts = '{5}'\n", 
+                            build_date,
+                            n.Attribute("runstate").Value,
                             n.Attribute("result").Value,
-                            n.Attribute("success").Value,
-                            n.Attribute("time").Value,
+                            n.Attribute("passed").Value,
+                            n.Attribute("duration").Value,
                             n.Attribute("asserts").Value));
                     }
                     else {
                         history.Append(string.Format("executed = '{0}' result = '{1}''\n", 
-                            n.Attribute("executed").Value,
+                            n.Attribute("runstate").Value,
                             n.Attribute("result").Value));
                     }
                     

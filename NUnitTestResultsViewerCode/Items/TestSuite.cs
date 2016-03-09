@@ -29,7 +29,8 @@ namespace NUnitTestResultsViewerCode.Items
     {
       var testsuite = new TestSuite( element );
 
-      foreach( var res in element.Elements( "results" ) )
+      //foreach( var res in element.Elements( "results" ) )
+      foreach( var res in element.Elements( "test-suite" ) )
       {
         foreach( var el in res.Elements( "test-suite" ) )
         {

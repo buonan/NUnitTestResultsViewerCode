@@ -13,6 +13,8 @@ namespace NUnitTestResultsViewerCode.Items
   public enum TestResultsEnum
   {
     Success,
+    Passed,
+    Failed,
     Failure,
     Inconclusive,
     Ignored,
@@ -44,8 +46,10 @@ namespace NUnitTestResultsViewerCode.Items
     /// </summary>
     protected virtual void intialize()
     {
-      Name = _element.Attribute( "name" ).Value;
-      Text = Name;      
+        if (_element != null && _element.Attribute( "name" ) != null) {
+            Name = _element.Attribute( "name" ).Value;
+            Text = Name;      
+        }   
     }
 
     ///// <summary>
@@ -78,6 +82,7 @@ namespace NUnitTestResultsViewerCode.Items
       var attr = _element.Attribute( attributeName );
       if( null == attr )
       {
+        Console.WriteLine(attributeName);  
         throw new ArgumentException( "Attribute not found" );
       }
 
@@ -89,6 +94,9 @@ namespace NUnitTestResultsViewerCode.Items
       {
         if( !Enum.IsDefined( typeof( T ), attr.Value ) )
         {
+          Console.WriteLine(attr.Value);           
+          Console.WriteLine(attr.Name);
+          Console.WriteLine(typeof(T));
           throw new InvalidCastException( "Can not cast value to specified enum." );
         }
         return Enum.Parse( typeof( T ), attr.Value );

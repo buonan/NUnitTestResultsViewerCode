@@ -35,7 +35,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (bool)readAttribute<bool>( "executed" );
+        return (bool)(readAttribute<string>( "runstate" )=="Runnable");//return (bool)readAttribute<bool>( "executed" );
       }
     }
 
@@ -47,6 +47,7 @@ namespace NUnitTestResultsViewerCode.Items
       get
       {
         return (TestResultsEnum)readAttribute<TestResultsEnum>( "result" );
+        //return TestResultsEnum.Inconclusive;
       }
     }
 
@@ -54,17 +55,17 @@ namespace NUnitTestResultsViewerCode.Items
     {
         get
         {
-            if( !_typeAssembly )
+            if( _typeAssembly )
             {
-                return null;
+                try {
+                    string t = (string)readAttribute<string>( "errors" );
+                    return t;
+                }
+                catch (Exception e) {
+                    return null;
+                }
             }
-            try {
-                string t = (string)readAttribute<string>( "errors" );
-            }
-            catch (Exception e) {
-                return null;
-            }
-            return (string)readAttribute<string>( "errors" );
+            return null;   
         }
     }
 
@@ -72,17 +73,80 @@ namespace NUnitTestResultsViewerCode.Items
     {
         get
         {
-            if( !_typeAssembly )
+            if( _typeAssembly )
             {
-                return null;
+                try {
+                    string t = (string)readAttribute<string>( "failures" );
+                    return t;
+                }
+                catch (Exception e) {
+                    return null;
+                }
             }
-            try {
-                string t = (string)readAttribute<string>( "failures" );
+            return null;        
+        }
+    }
+
+    public string Ignored
+    {
+        get
+        {
+            if( _typeAssembly )
+            {
+                try {
+                    string t = (string)readAttribute<string>( "not-run" );
+                    return t;
+                }
+                catch (Exception e) {
+                    return null;
+                }
             }
-            catch (Exception e) {
-                return null;
+            return null;            
+        }
+    }
+
+    public string Total
+    {
+        get
+        {
+            if( _typeAssembly )
+            {
+                try {
+                    string t = (string)readAttribute<string>( "total" );
+                    return t;
+                }
+                catch (Exception e) {
+                    return null;
+                }
             }
-            return (string)readAttribute<string>( "failures" );
+            return null;      
+        }
+    }
+
+    public string PassRate
+    {
+        get
+        {
+            if( _typeAssembly )
+            {
+                try {
+                        double total = double.Parse(this.Total ?? "0");
+                        double errors = double.Parse(this.Errors ?? "0");
+                        double failures = double.Parse(this.Failures ?? "0");
+                        double ignored = double.Parse(this.Ignored ?? "0");
+                        double total_failed = errors + failures;
+                        double pass = ((total - total_failed) / total) * 100;
+                        string val = string.Empty;
+                        if (!double.IsNaN(pass)) {
+                            val = string.Format("{0} %", pass.ToString("#.##"));
+                        }
+                        return val;
+                }
+                catch (Exception e) {
+                    return null;
+                }
+            }
+            return null;      
         }
     }
 
@@ -126,10 +190,12 @@ namespace NUnitTestResultsViewerCode.Items
       switch( TestResultValue )
       {
         case TestResultsEnum.Success:
+        case TestResultsEnum.Passed:
           ImageKey = Defines.IMAGE_KEY_SUCCESS;
           SelectedImageKey = ImageKey;
           break;
         case TestResultsEnum.Failure:
+        case TestResultsEnum.Failed:
         case TestResultsEnum.Error:
         case TestResultsEnum.Invalid:
           ImageKey = Defines.IMAGE_KEY_FAILURE;

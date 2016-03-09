@@ -36,9 +36,12 @@
       this.lblAssertsCap = new System.Windows.Forms.Label();
       this.lblTime = new System.Windows.Forms.Label();
       this.lblTimeCap = new System.Windows.Forms.Label();
-      this.lblName = new System.Windows.Forms.Label();
+      this.lblName = new System.Windows.Forms.TextBox();
       this.label9 = new System.Windows.Forms.Label();
 
+        this.labelPass = new System.Windows.Forms.Label();
+        this.lblPass = new System.Windows.Forms.Label();
+        this.labelTotal = new System.Windows.Forms.Label();
         this.lblTotal = new System.Windows.Forms.Label();
         this.label2Errors = new System.Windows.Forms.Label();
         this.lblErrors = new System.Windows.Forms.Label();
@@ -47,6 +50,7 @@
         this.lblInvalid = new System.Windows.Forms.Label();
         this.lblNotRun = new System.Windows.Forms.Label();
         this.lblInconclusive = new System.Windows.Forms.Label();
+        this.labelIgnored = new System.Windows.Forms.Label();
         this.lblIgnored = new System.Windows.Forms.Label();
         this.lblSkipped = new System.Windows.Forms.Label();
 
@@ -153,12 +157,53 @@
       this.label9.Size = new System.Drawing.Size( 48, 16 );
       this.label9.TabIndex = 17;
       this.label9.Text = "Name:";
+
+            // 
+            // label1
+            // 
+            this.labelPass.AutoSize = true;
+            this.labelPass.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
+            this.labelPass.Location = new System.Drawing.Point( 15, 167 );
+            this.labelPass.Name = "labelPass";
+            this.labelPass.Size = new System.Drawing.Size( 39, 167 );
+            this.labelPass.TabIndex = 0;
+            this.labelPass.Text = "Passrate:";
+            // 
+            // lblTotal
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.Location = new System.Drawing.Point( 102, 167 );
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size( 31, 13 );
+            this.lblPass.TabIndex = 9;
+            this.lblPass.Text = "0000";
+
+            // 
+            // label1
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
+            this.labelTotal.Location = new System.Drawing.Point( 15, 187 );
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size( 39, 167 );
+            this.labelTotal.TabIndex = 0;
+            this.labelTotal.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point( 102, 187 );
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size( 31, 13 );
+            this.lblTotal.TabIndex = 9;
+            this.lblTotal.Text = "0000";
+
             // 
             // label2
             // 
             this.label2Errors.AutoSize = true;
             this.label2Errors.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
-            this.label2Errors.Location = new System.Drawing.Point( 15, 167 );
+            this.label2Errors.Location = new System.Drawing.Point( 15, 207 );
             this.label2Errors.Name = "label2Errors";
             this.label2Errors.Size = new System.Drawing.Size( 44, 13 );
             this.label2Errors.TabIndex = 1;
@@ -167,23 +212,37 @@
             // lblErrors
             // 
             this.lblErrors.AutoSize = true;
-            this.lblErrors.Location = new System.Drawing.Point( 102, 167 );
+            this.lblErrors.Location = new System.Drawing.Point( 102, 207 );
             this.lblErrors.Name = "lblErrors";
             this.lblErrors.Size = new System.Drawing.Size( 31, 13 );
             this.lblErrors.TabIndex = 10;
             this.lblErrors.Text = "0000";
 
+            this.labelIgnored.AutoSize = true;
+            this.labelIgnored.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
+            this.labelIgnored.Location = new System.Drawing.Point( 15, 227 );
+            this.labelIgnored.Name = "labelIgnored";
+            this.labelIgnored.Size = new System.Drawing.Size( 54, 13 );
+            this.labelIgnored.TabIndex = 2;
+            this.labelIgnored.Text = "Ignored:";
+            this.lblIgnored.AutoSize = true;
+            this.lblIgnored.Location = new System.Drawing.Point( 102, 227 );
+            this.lblIgnored.Name = "lblIgnored";
+            this.lblIgnored.Size = new System.Drawing.Size( 51, 13 );
+            this.lblIgnored.TabIndex = 11;
+            this.lblIgnored.Text = "0000";
+
             this.label3Failures.AutoSize = true;
             this.label3Failures.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
-            this.label3Failures.Location = new System.Drawing.Point( 15, 187 );
+            this.label3Failures.Location = new System.Drawing.Point( 15, 247 );
             this.label3Failures.Name = "label3Failures";
             this.label3Failures.Size = new System.Drawing.Size( 54, 13 );
             this.label3Failures.TabIndex = 2;
             this.label3Failures.Text = "Failures:";
             this.lblFailures.AutoSize = true;
-            this.lblFailures.Location = new System.Drawing.Point( 102, 187 );
+            this.lblFailures.Location = new System.Drawing.Point( 102, 247 );
             this.lblFailures.Name = "lblFailures";
-            this.lblFailures.Size = new System.Drawing.Size( 31, 13 );
+            this.lblFailures.Size = new System.Drawing.Size( 51, 13 );
             this.lblFailures.TabIndex = 11;
             this.lblFailures.Text = "0000";
       // 
@@ -202,6 +261,7 @@
       this.Controls.Add( this.lblExecuted );
       this.Controls.Add( this.label1 );
         this.Controls.Add( this.lblSkipped );
+        this.Controls.Add( this.labelIgnored );
         this.Controls.Add( this.lblIgnored );
         this.Controls.Add( this.lblInconclusive );
         this.Controls.Add( this.lblNotRun );
@@ -210,7 +270,10 @@
         this.Controls.Add( this.lblFailures );
         this.Controls.Add( this.label2Errors );
         this.Controls.Add( this.lblErrors );
+        this.Controls.Add( this.labelTotal );         
         this.Controls.Add( this.lblTotal );
+        this.Controls.Add( this.labelPass );         
+        this.Controls.Add( this.lblPass );
       this.Font = new System.Drawing.Font( "Tahoma", 8.25F );
       this.Name = "CompTestResult";
       this.Size = new System.Drawing.Size( 484, 280 );
@@ -229,8 +292,12 @@
     private System.Windows.Forms.Label lblAssertsCap;
     private System.Windows.Forms.Label lblTime;
     private System.Windows.Forms.Label lblTimeCap;
-    private System.Windows.Forms.Label lblName;
+    private System.Windows.Forms.TextBox lblName;
     private System.Windows.Forms.Label label9;
+   
+    private System.Windows.Forms.Label labelPass;
+    private System.Windows.Forms.Label lblPass;
+    private System.Windows.Forms.Label labelTotal;
     private System.Windows.Forms.Label lblTotal;
     private System.Windows.Forms.Label label2Errors;
     private System.Windows.Forms.Label lblErrors;
@@ -239,6 +306,7 @@
     private System.Windows.Forms.Label lblInvalid;
     private System.Windows.Forms.Label lblNotRun;
     private System.Windows.Forms.Label lblInconclusive;
+    private System.Windows.Forms.Label labelIgnored;
     private System.Windows.Forms.Label lblIgnored;
     private System.Windows.Forms.Label lblSkipped;
   }

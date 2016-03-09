@@ -41,8 +41,12 @@ namespace NUnitTestResultsViewerCode.UI
       lblTime.Visible = isExecuted;
       lblAssertsCap.Visible = isExecuted;
       lblTimeCap.Visible = isExecuted;
+
+      lblPass.Text = res.PassRate ?? "";
+      lblTotal.Text = res.Total ?? "";
       lblErrors.Text = res.Errors ?? "";
       lblFailures.Text = res.Failures ?? "";
+      lblIgnored.Text = res.Ignored ?? "";
       if( isExecuted )
       {
         lblAsserts.Text = res.Asserts.Value.ToString();
