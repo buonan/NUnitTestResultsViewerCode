@@ -89,13 +89,13 @@ namespace NUnitTestResultsViewerCode.Items
                 .FirstOrDefault();
             if (n.Attribute("name").Value == testcaseName) {
                     if (n.Attribute("runstate").Value == "Runnable") {
-                        history.Append(string.Format("build '{0}' executed = '{1}' result = '{2}' success = '{3}' time = '{4}' asserts = '{5}'\n", 
+                        history.Append(string.Format("build '{0}' executed = '{1}' result = '{2}' passed = '{3}' time = '{4}' asserts = '{5}'\n", 
                             build_date,
                             n.Attribute("runstate").Value,
                             n.Attribute("result").Value,
-                            n.Attribute("passed").Value,
+                            n.Attribute("passed")!=null?n.Attribute("passed").Value:"NA",
                             n.Attribute("duration").Value,
-                            n.Attribute("asserts").Value));
+                            n.Attribute("asserts").Value??"NA"));
                     }
                     else {
                         history.Append(string.Format("executed = '{0}' result = '{1}''\n", 

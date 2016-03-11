@@ -76,7 +76,25 @@ namespace NUnitTestResultsViewerCode.Items
             if( _typeAssembly )
             {
                 try {
-                    string t = (string)readAttribute<string>( "failures" );
+                    string t = (string)readAttribute<string>( "failed" );
+                    return t;
+                }
+                catch (Exception e) {
+                    return null;
+                }
+            }
+            return null;        
+        }
+    }
+
+    public string Passed
+    {
+        get
+        {
+            if( _typeAssembly )
+            {
+                try {
+                    string t = (string)readAttribute<string>( "passed" );
                     return t;
                 }
                 catch (Exception e) {
@@ -94,7 +112,7 @@ namespace NUnitTestResultsViewerCode.Items
             if( _typeAssembly )
             {
                 try {
-                    string t = (string)readAttribute<string>( "not-run" );
+                    string t = (string)readAttribute<string>( "skipped" );
                     return t;
                 }
                 catch (Exception e) {
@@ -131,11 +149,13 @@ namespace NUnitTestResultsViewerCode.Items
             {
                 try {
                         double total = double.Parse(this.Total ?? "0");
+                        double passed = double.Parse(this.Passed ?? "0");
                         double errors = double.Parse(this.Errors ?? "0");
                         double failures = double.Parse(this.Failures ?? "0");
                         double ignored = double.Parse(this.Ignored ?? "0");
                         double total_failed = errors + failures;
-                        double pass = ((total - total_failed) / total) * 100;
+                        //double pass = ((total - total_failed) / total) * 100;
+                        double pass = ((passed) / total) * 100;
                         string val = string.Empty;
                         if (!double.IsNaN(pass)) {
                             val = string.Format("{0} %", pass.ToString("#.##"));
