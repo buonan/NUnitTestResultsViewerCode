@@ -28,7 +28,7 @@ namespace NUnitTestResultsViewerCode.UI
       txtHistory.Text = res.History;
       txtMessage.Text = res.Message;
       txtStackTrace.Text = res.StackTrace;
-
+      txtOutput.Text = res.Output;
     }
   }
 }

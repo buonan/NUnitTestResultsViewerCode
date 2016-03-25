@@ -79,6 +79,14 @@ namespace NUnitTestResultsViewerCode.Items
       }
     }
 
+    public int PassedCount
+    {
+        get
+        {
+            return (int)readAttribute<int>( "passed" );//return (int)readAttribute<int>( "failures" );
+        }
+    }
+
     /// <summary>
     /// Get/Set not runned tests count.
     /// </summary>

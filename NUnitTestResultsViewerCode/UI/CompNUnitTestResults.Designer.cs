@@ -197,6 +197,14 @@
       this.lblSkipped.Size = new System.Drawing.Size( 31, 13 );
       this.lblSkipped.TabIndex = 16;
       this.lblSkipped.Text = "0000";
+
+        this.lblSkipped.AutoSize = true;
+        this.lblSkipped.Location = new System.Drawing.Point( 102, 242 );
+        this.lblSkipped.Name = "lblPassed";
+        this.lblSkipped.Size = new System.Drawing.Size( 31, 13 );
+        this.lblSkipped.TabIndex = 16;
+        this.lblSkipped.Text = "0000";
+
       // 
       // CompNUnitTestResults
       // 
@@ -209,6 +217,7 @@
       this.Controls.Add( this.lblInvalid );
       this.Controls.Add( this.lblFailures );
       this.Controls.Add( this.lblErrors );
+      this.Controls.Add( this.lblPassed );
       this.Controls.Add( this.lblTotal );
       this.Controls.Add( this.label8 );
       this.Controls.Add( this.label7 );
@@ -244,5 +253,6 @@
     private System.Windows.Forms.Label lblInconclusive;
     private System.Windows.Forms.Label lblIgnored;
     private System.Windows.Forms.Label lblSkipped;
+    private System.Windows.Forms.Label lblPassed;
   }
 }

@@ -101,6 +101,7 @@ namespace NUnitTestResultsViewerCode
         lblerrors.Text = string.Format( "Errors: {0}   ", results.ErrorsCount );
         lblFailure.Text = string.Format( "Failure: {0}   ", results.FailuresCount );
         lblInvalid.Text = string.Format( "Invalid: {0}   ", results.InvalidCount );
+        lblInvalid.Text = string.Format( "Invalid: {0}   ", results.InvalidCount );
       }
       else
       {

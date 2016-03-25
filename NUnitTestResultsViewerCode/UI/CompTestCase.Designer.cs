@@ -32,15 +32,19 @@
       this.tabHistory = new System.Windows.Forms.TabPage();
       this.tabGeneral = new System.Windows.Forms.TabPage();
       this.tabMessage = new System.Windows.Forms.TabPage();
+      this.tabOutput = new System.Windows.Forms.TabPage();
+      this.txtOutput = new System.Windows.Forms.TextBox();
       this.txtHistory = new System.Windows.Forms.TextBox();
       this.txtMessage = new System.Windows.Forms.TextBox();
       this.tabStackTrace = new System.Windows.Forms.TabPage();
       this.txtStackTrace = new System.Windows.Forms.TextBox();
+      //this.wbOutput = Mono.WebBrowser.Manager.GetNewInstance(); 
       this.compTestResult = new NUnitTestResultsViewerCode.UI.CompTestResult();
       this.tabControl.SuspendLayout();
       this.tabHistory.SuspendLayout();
       this.tabGeneral.SuspendLayout();
       this.tabMessage.SuspendLayout();
+      this.tabOutput.SuspendLayout();
       this.tabStackTrace.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -51,6 +55,7 @@
       this.tabControl.Controls.Add( this.tabGeneral );
       this.tabControl.Controls.Add( this.tabMessage );
       this.tabControl.Controls.Add( this.tabStackTrace );
+      this.tabControl.Controls.Add( this.tabOutput );
       this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tabControl.Location = new System.Drawing.Point( 0, 0 );
       this.tabControl.Margin = new System.Windows.Forms.Padding( 0 );
@@ -70,7 +75,6 @@
       this.tabHistory.Size = new System.Drawing.Size( 439, 300 );
       this.tabHistory.TabIndex = 0;
       this.tabHistory.Text = "History";
-
       // 
       // tabGeneral
       // 
@@ -128,6 +132,31 @@
       this.tabStackTrace.TabIndex = 3;
       this.tabStackTrace.Text = "Stack Trace";
       this.tabStackTrace.UseVisualStyleBackColor = true;
+
+        this.tabOutput.Controls.Add( this.txtOutput );
+        //this.tabOutput.Controls.Add( (System.Windows.Forms.Control)this.wbOutput.Window );
+
+        this.tabOutput.Location = new System.Drawing.Point( 4, 4 );
+        this.tabOutput.Name = "tabOutput";
+        this.tabOutput.Size = new System.Drawing.Size( 439, 300 );
+        this.tabOutput.TabIndex = 3;
+        this.tabOutput.Text = "Output";
+        this.tabOutput.UseVisualStyleBackColor = true;
+        //this.wbOutput.Resize(260, 216);
+        //this.wbOutput.Activate();
+
+        this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+        this.txtOutput.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 204 ) ) );
+        this.txtOutput.Location = new System.Drawing.Point( 0, 0 );
+        this.txtOutput.Margin = new System.Windows.Forms.Padding( 0 );
+        this.txtOutput.Multiline = true;
+        this.txtOutput.Name = "txtHistory";
+        this.txtOutput.ReadOnly = true;
+        this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        this.txtOutput.Size = new System.Drawing.Size( 439, 300 );
+        this.txtOutput.TabIndex = 0;
+
       // 
       // txtStackTrace
       // 
@@ -164,6 +193,7 @@
       this.tabHistory.ResumeLayout( false );
       this.tabGeneral.ResumeLayout( false );
       this.tabMessage.ResumeLayout( false );
+      this.tabOutput.ResumeLayout( false );
       this.tabMessage.PerformLayout();
       this.tabStackTrace.ResumeLayout( false );
       this.tabStackTrace.PerformLayout();
@@ -178,9 +208,12 @@
     private System.Windows.Forms.TabPage tabGeneral;
     private System.Windows.Forms.TabPage tabMessage;
     private System.Windows.Forms.TabPage tabStackTrace;
+    private System.Windows.Forms.TabPage tabOutput;
     private CompTestResult compTestResult;
     private System.Windows.Forms.TextBox txtHistory;
     private System.Windows.Forms.TextBox txtMessage;
     private System.Windows.Forms.TextBox txtStackTrace;
+    private System.Windows.Forms.TextBox txtOutput;
+    //private Mono.WebBrowser.IWebBrowser  wbOutput;
   }
 }

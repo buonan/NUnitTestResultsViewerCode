@@ -58,6 +58,14 @@ namespace NUnitTestResultsViewerCode.Items
       }
     }
 
+    public string Output
+    {
+        get
+        {
+            return readDescenadantNodeValue( "output" );
+        }
+    }
+
     private string readDescenadantNodeValue( string nodename )
     {
       var node = _element.Descendants( nodename ).FirstOrDefault();
