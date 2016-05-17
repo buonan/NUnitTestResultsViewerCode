@@ -251,6 +251,7 @@ namespace NUnitTestResultsViewerCode
     {
       _shownItems[TestResultsEnum.Error] = errorsToolStripMenuItem.Checked;
       _shownItems[TestResultsEnum.Failure] = failuresToolStripMenuItem.Checked;
+      _shownItems[TestResultsEnum.Failed] = failuresToolStripMenuItem.Checked;
       _shownItems[TestResultsEnum.Ignored] = ignoredToolStripMenuItem.Checked;
       _shownItems[TestResultsEnum.Inconclusive] = inconclusiveToolStripMenuItem.Checked;
       _shownItems[TestResultsEnum.Invalid] = invalidToolStripMenuItem.Checked;

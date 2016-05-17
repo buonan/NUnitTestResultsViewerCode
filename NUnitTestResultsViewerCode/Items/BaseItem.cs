@@ -82,8 +82,9 @@ namespace NUnitTestResultsViewerCode.Items
       var attr = _element.Attribute( attributeName );
       if( null == attr )
       {
-        Console.WriteLine(attributeName);  
-        throw new ArgumentException( "Attribute not found" );
+        Console.WriteLine("readAttribute " + attributeName);  
+        //throw new ArgumentException( "Attribute not found" );
+        attr = _element.Attribute( "failed" );        
       }
 
       if( typeof( T ) == typeof( string ) )
@@ -94,9 +95,9 @@ namespace NUnitTestResultsViewerCode.Items
       {
         if( !Enum.IsDefined( typeof( T ), attr.Value ) )
         {
-          Console.WriteLine(attr.Value);           
-          Console.WriteLine(attr.Name);
-          Console.WriteLine(typeof(T));
+          Console.WriteLine("readAttribute2 " + attr.Value);           
+          Console.WriteLine("readAttribute3 " + attr.Name);
+          Console.WriteLine("readAttribute4 " + typeof(T));
           throw new InvalidCastException( "Can not cast value to specified enum." );
         }
         return Enum.Parse( typeof( T ), attr.Value );

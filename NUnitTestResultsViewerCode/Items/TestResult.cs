@@ -14,6 +14,7 @@ namespace NUnitTestResultsViewerCode.Items
   abstract class TestResult : BaseItem
   {
     protected bool _typeAssembly = false;
+    protected bool _testCase = false;
 
     /// <summary>
     /// Initializes class.
@@ -25,6 +26,10 @@ namespace NUnitTestResultsViewerCode.Items
         XAttribute t = element.Attribute("type");
         if (t != null) {
             _typeAssembly = (t.Value == "Assembly" ? true : false);
+            if (element.Name == "test-case")
+                _testCase = true;
+            else 
+                _testCase = false;
         }
     }
 
@@ -35,7 +40,7 @@ namespace NUnitTestResultsViewerCode.Items
     {
       get
       {
-        return (bool)(readAttribute<string>( "runstate" )=="Runnable");//return (bool)readAttribute<bool>( "executed" );
+        return true; // return (bool)(readAttribute<string>( "runstate" )=="Runnable");//return (bool)readAttribute<bool>( "executed" );
       }
     }
 
@@ -150,16 +155,16 @@ namespace NUnitTestResultsViewerCode.Items
                 try {
                         double total = double.Parse(this.Total ?? "0");
                         double passed = double.Parse(this.Passed ?? "0");
-                        double errors = double.Parse(this.Errors ?? "0");
                         double failures = double.Parse(this.Failures ?? "0");
                         double ignored = double.Parse(this.Ignored ?? "0");
-                        double total_failed = errors + failures;
                         //double pass = ((total - total_failed) / total) * 100;
                         double pass = ((passed) / total) * 100;
                         string val = string.Empty;
                         if (!double.IsNaN(pass)) {
                             val = string.Format("{0} %", pass.ToString("#.##"));
                         }
+                        double errors = double.Parse(this.Errors ?? "0");
+                        double total_failed = errors + failures;
                         return val;
                 }
                 catch (Exception e) {
@@ -181,8 +186,16 @@ namespace NUnitTestResultsViewerCode.Items
         {
           return null;
         }
-        return (string)readAttribute<string>( "time" );
+        return (string)readAttribute<string>( "duration" );
       }
+    }
+
+    public string Duration
+    {
+        get
+        {           
+            return (string)readAttribute<string>( "duration" );
+        }
     }
 
     /// <summary>

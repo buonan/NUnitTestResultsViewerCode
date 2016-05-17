@@ -34,7 +34,7 @@ namespace NUnitTestResultsViewerCode.UI
       {
         throw new ArgumentException( "Invalid argument type." );
       }
-
+                      
       var isExecuted = res.IsExecuted;
 
       lblAsserts.Visible = isExecuted;
@@ -47,6 +47,7 @@ namespace NUnitTestResultsViewerCode.UI
       lblErrors.Text = res.Errors ?? "";
       lblFailures.Text = res.Failures ?? "";
       lblIgnored.Text = res.Ignored ?? "";
+      lblDuration.Text = res.Duration ?? "";
       if( isExecuted )
       {
         lblAsserts.Text = res.Asserts.Value.ToString();

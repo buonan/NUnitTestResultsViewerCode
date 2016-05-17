@@ -53,6 +53,8 @@
         this.labelIgnored = new System.Windows.Forms.Label();
         this.lblIgnored = new System.Windows.Forms.Label();
         this.lblSkipped = new System.Windows.Forms.Label();
+        this.label3Duration = new System.Windows.Forms.Label();
+        this.lblDuration = new System.Windows.Forms.Label();
 
       this.SuspendLayout();
       // 
@@ -245,6 +247,20 @@
             this.lblFailures.Size = new System.Drawing.Size( 51, 13 );
             this.lblFailures.TabIndex = 11;
             this.lblFailures.Text = "0000";
+
+            this.label3Duration.AutoSize = true;
+            this.label3Duration.Font = new System.Drawing.Font( "Tahoma", 9.75F, System.Drawing.FontStyle.Bold );
+            this.label3Duration.Location = new System.Drawing.Point( 15, 267 );
+            this.label3Duration.Name = "label3Duration";
+            this.label3Duration.Size = new System.Drawing.Size( 54, 13 );
+            this.label3Duration.TabIndex = 2;
+            this.label3Duration.Text = "Duration:";
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Location = new System.Drawing.Point( 102, 267 );
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size( 51, 13 );
+            this.lblDuration.TabIndex = 11;
+            this.lblDuration.Text = "0000";
       // 
       // CompTestResult
       // 
@@ -274,6 +290,8 @@
         this.Controls.Add( this.lblTotal );
         this.Controls.Add( this.labelPass );         
         this.Controls.Add( this.lblPass );
+        this.Controls.Add( this.label3Duration );         
+        this.Controls.Add( this.lblDuration );
       this.Font = new System.Drawing.Font( "Tahoma", 8.25F );
       this.Name = "CompTestResult";
       this.Size = new System.Drawing.Size( 484, 280 );
@@ -309,5 +327,7 @@
     private System.Windows.Forms.Label labelIgnored;
     private System.Windows.Forms.Label lblIgnored;
     private System.Windows.Forms.Label lblSkipped;
+    private System.Windows.Forms.Label label3Duration;
+    private System.Windows.Forms.Label lblDuration;
   }
 }

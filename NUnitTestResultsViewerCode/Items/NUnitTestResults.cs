@@ -142,6 +142,14 @@ namespace NUnitTestResultsViewerCode.Items
       }
     }
 
+    public double Duration
+    {
+        get
+        {
+          return (double)readAttribute<double>( "duration" );//return (int)readAttribute<int>( "invalid" );
+        }
+    }
+
     /// <summary>
     /// Get/Set test runs date time.
     /// </summary>
